@@ -1,54 +1,68 @@
-html_content = """
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Чек-лист по заготовкам</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Чек-лист заготовок</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 8px; border: 1px solid #ccc; text-align: left; }
-    th { background-color: #f2f2f2; }
-    .checkbox-cell { text-align: center; width: 80px; }
+    body {
+      font-family: sans-serif;
+      padding: 10px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .item {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 6px;
+    }
+    .checkboxes {
+      display: flex;
+      gap: 15px;
+      margin-top: 5px;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 5px;
+      }
+      .checkboxes {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
-  <h2>✅ Чек-лист по заготовкам</h2>
-  <table>
-    <tr>
-      <th>Заготовка</th>
-      <th class="checkbox-cell">Сделано</th>
-      <th class="checkbox-cell">Не сделано</th>
-    </tr>
-"""
+  <h1>Чек-лист заготовок</h1>
 
-items = [
-    "Рис", "Сёмга слайсы", "Сёмга внутряк", "Угорь слайсы", "Угорь внутряк",
-    "Тунец", "Креветки", "Мидии", "Хот мидии", "Сёмга жаренная",
-    "Кримета", "Кляр", "Чука", "Тобико красная", "Тобико оранжевая",
-    "Огурец", "Краб", "Сыр Эдамер", "Дайкон", "Кунжут микс",
-    "Мицукан", "Спайси соус", "Васаби, Имбирь, Соевый", "Соуснички"
-]
+  <div class="item">
+    <strong>Рис:</strong> варим в некоммерческие дни — 6 мармидок, в коммерческие — 8, праздничные — 10–12
+    <div class="checkboxes">
+      <label><input type="checkbox" /> Сделано</label>
+      <label><input type="checkbox" /> Не сделано</label>
+    </div>
+  </div>
 
-for item in items:
-    html_content += f"""
-    <tr>
-      <td>{item}</td>
-      <td class="checkbox-cell"><input type="checkbox"></td>
-      <td class="checkbox-cell"><input type="checkbox"></td>
-    </tr>
-    """
+  <div class="item">
+    <strong>Сёмга слайсы:</strong> будни/выходные/праздники — 2/4/5 внизу, 1 сверху
+    <div class="checkboxes">
+      <label><input type="checkbox" /> Сделано</label>
+      <label><input type="checkbox" /> Не сделано</label>
+    </div>
+  </div>
 
-html_content += """
-  </table>
+  <!-- Продолжай по аналогии для остальных пунктов... -->
+
 </body>
 </html>
-"""
 
-# Save to file
-html_path = "/mnt/data/checklist_zagotovki.html"
-with open(html_path, "w", encoding="utf-8") as f:
-    f.write(html_content)
-
-html_path  # Return path to download
 
